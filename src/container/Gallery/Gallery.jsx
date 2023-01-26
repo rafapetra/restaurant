@@ -1,11 +1,78 @@
-import React from 'react';
+import React from "react";
+import {
+  BsInstagram,
+  BsArrowLeftShort,
+  BsArrowRightShort,
+  BsArrowLeft,
+} from "react-icons/bs";
+import { SubHeading } from "../../components";
+import { images } from "../../constants";
 
-import './Gallery.css';
+import "./Gallery.css";
 
-const Gallery = () => (
-  <div>
-    Gallery
-  </div>
-);
+const galleryImages = [
+  images.gallery01,
+  images.gallery02,
+  images.gallery03,
+  images.gallery04,
+];
+
+const Gallery = () => {
+  const scrollRef = React.useRef(null);
+
+  const scroll = (direction) => {
+    const { current } = scrollRef;
+
+    if (direction === "left") {
+      current.scrollLeft -= 300;
+    } else {
+      current.scrollLeft += 300;
+    }
+  };
+  return (
+    <div className="app__gallery flex__center">
+      <div className="app__gallery-content">
+        <SubHeading title="Instagram" />
+        <h1 className="headtext__cormorant">Photo Gallery</h1>
+        <p className="p__opensans" style={{ color: "#AAA", marginTop: "2rem" }}>
+          Tply dummy text of the printing and typesetting industry. Lorem Ipsum
+          has been the industry's standard dummy text ever since the 1500s, when
+          an unknown printer took a galley of type and scrambled it to make a
+          type specimen book. It has survived not only five centuries, but also
+          the leap into electronic typesetting, remaining essentially unchanged.
+          It was popularised in the 1960s with the release of Letraset sheets
+          containing Lorem Ipsum passages, and more recently with desktop
+          publishing soft
+        </p>
+        <button type="button" className="custom__button">
+          View More
+        </button>
+      </div>
+
+      <div className="app__gallery-images">
+        <div className="app__gallery-images_container" ref={scrollRef}>
+          {galleryImages.map((image, index) => (
+            <div
+              className="app_gallery-images_card flex__center"
+              key={"gallery_image-${index + 1}"}
+            >
+              <img src={image} alt="gallery"></img>
+            </div>
+          ))}
+        </div>
+        <div className="app__gallery-images_arrows">
+          <BsArrowLeftShort
+            className="gallery__arrow-icon"
+            onClick={() => scroll("left")}
+          />
+          <BsArrowRightShort
+            className="gallery__arrow-icon"
+            onClick={() => scroll("right")}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Gallery;
