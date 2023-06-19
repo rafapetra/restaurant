@@ -48,4 +48,3 @@ We would like to thank the following resources for their invaluable contribution
 - [ReactJS Documentation](https://reactjs.org/docs)
 - [React Router Documentation](https://reactrouter.com)
 - [HTML5 Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- [CSS3 Documentation
